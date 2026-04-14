@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_onboarding"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.gestiondesastres.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+
+        <!-- Login → Home (autenticación exitosa) -->
+        <action
+            android:id="@+id/action_login_to_home"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+
+        <!-- Login → Registro -->
+        <action
+            android:id="@+id/action_login_to_register"
+            app:destination="@id/registerFragment" />
+
+        <!-- Login → Recuperar contraseña -->
+        <action
+            android:id="@+id/action_login_to_forgot"
+            app:destination="@id/forgottenPasswordFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.gestiondesastres.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register">
+
+        <!-- Registro exitoso → Información personal -->
+        <action
+            android:id="@+id/action_register_to_registerInfo"
+            app:destination="@id/registerInfoFragment"
+            app:popUpTo="@id/registerFragment"
+            app:popUpToInclusive="true" />
+
+        <!-- Registro → Volver al Login -->
+        <action
+            android:id="@+id/action_register_to_login"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="false" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/forgottenPasswordFragment"
+        android:name="com.example.gestiondesastres.ForgottenPasswordFragment"
+        android:label="fragment_forgotten_password"
+        tools:layout="@layout/fragment_forgotten_password">
+
+        <!-- Recuperar contraseña → Volver al Login -->
+        <action
+            android:id="@+id/action_forgot_to_login"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="false" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerInfoFragment"
+        android:name="com.example.gestiondesastres.RegisterInfoFragment"
+        android:label="fragment_register_info"
+        tools:layout="@layout/fragment_register_info">
+
+        <!-- Información personal → Home (completó registro) -->
+        <action
+            android:id="@+id/action_registerInfo_to_home"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/nav_onboarding"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.gestiondesastres.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_home_to_login"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+</navigation>

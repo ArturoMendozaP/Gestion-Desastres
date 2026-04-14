@@ -1,3 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">GestionDesastres</string>
+    <string name="app_name">Gestión de Desastres</string>
+    <string name="login_welcome">Bienvenido</string>
+    <string name="login_subtitle">Inicia sesión para continuar</string>
+    <string name="btn_login">Iniciar sesión</string>
+    <string name="btn_forgot_password">¿Olvidaste tu contraseña?</string>
+    <string name="register_welcome">Crear cuenta</string>
+    <string name="register_subtitle">Regístrate para unirte al sistema</string>
+    <string name="btn_register">Registrarse</string>
+    <string name="btn_register_action">Crear cuenta</string>
+    <string name="forgot_title">Recuperar contraseña</string>
+    <string name="forgot_subtitle">Te enviaremos un enlace a tu correo</string>
+    <string name="btn_send_link">Enviar enlace</string>
+    <string name="btn_back_login">Volver al inicio de sesión</string>
+    <string name="personal_info_title">Información personal</string>
+    <string name="personal_info_subtitle">Estos datos nos ayudan a identificarte en el sistema de respuesta</string>
+    <string name="btn_continue">Continuar</string>
+    <string name="btn_skip">Completar después</string>
+    <string name="home_welcome">Sistema de Gestión de Desastres</string>
+    <string name="home_subtitle">Monitorea, coordina y responde a emergencias en tiempo real.</string>
+    <string name="hint_email">Correo electrónico</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="hint_name">Nombre</string>
+    <string name="hint_first_name">Nombre(s)</string>
+    <string name="hint_last_name">Apellidos</string>
+    <string name="hint_username">Nombre de usuario</string>
+    <string name="hint_phone">Teléfono de contacto</string>
+    <string name="hint_birthdate">Fecha de nacimiento</string>
+    <string name="error_empty_field">Este campo es obligatorio</string>
+    <string name="error_invalid_email">Ingresa un correo válido</string>
+    <string name="error_password_short">La contraseña debe tener al menos 8 caracteres</string>
+    <string name="error_invalid_phone">Ingresa un número de teléfono válido</string>
+    <string name="loading">Cargando…</string>
+    <string name="retry">Reintentar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="accept">Aceptar</string>
+    <string name="gestion_desastres">Gestión de desastres</string>
+    <string name="descripcion_home">Aplicación para la gestión de desastres CDMX</string>
 </resources>
