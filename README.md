@@ -41,9 +41,4 @@ El desarrollo sigue los estándares de arquitectura moderna en Android:
 ---
 
 ## 👤 Autor
-**Arturo Mendoza P.** *Estudiante de la Universidad Nacional Autónoma de México (UNAM)* *Materia: Desarrollo de Aplicaciones Móviles*
-
----
-
-## 📄 Licencia
-Este proyecto se distribuye bajo la licencia MIT.
+**Arturo Mendoza P.** 
