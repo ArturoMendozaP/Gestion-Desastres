@@ -65,10 +65,11 @@ class LoginFragment : Fragment() {
                             btnLogin.isEnabled = true
                             Toast.makeText(requireContext(), "¡Bienvenido!", Toast.LENGTH_SHORT).show()
 
-                            val intent = Intent(requireContext(), HomeActivity::class.java)
-                            startActivity(intent)
-
-                            requireActivity().finish()
+                            activity?.let { miActividad ->
+                                val intent = Intent(miActividad, HomeActivity::class.java)
+                                startActivity(intent)
+                                miActividad.finish()
+                            }
                         }
                         is ResponseService.Error -> {
                             btnLogin.isEnabled = true
