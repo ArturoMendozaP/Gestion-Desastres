@@ -1,4 +1,4 @@
-package com.example.gestiondesastres
+package com.example.gestiondesastres.onboarding
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,61 +11,61 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.example.gestiondesastres.R
+import com.example.gestiondesastres.onboarding.RegisterViewModel
 import com.example.gestiondesastres.core.ResponseService
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
 
-class LoginFragment : Fragment() {
+class RegisterFragment : Fragment() {
 
-    // 1. Instanciamos el cerebro del Login
-    private val viewModel: LoginViewModel by viewModels()
+    private val viewModel: RegisterViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        return inflater.inflate(R.layout.fragment_register, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // ⚠️ REVISA TU XML: Asegúrate de que los IDs sean et_email, et_password, btn_login, etc.
         val etEmail = view.findViewById<TextInputEditText>(R.id.et_email)
         val etPassword = view.findViewById<TextInputEditText>(R.id.et_password)
-        val btnLogin = view.findViewById<MaterialButton>(R.id.btn_login)
         val btnRegister = view.findViewById<MaterialButton>(R.id.btn_register)
+        val btnBack = view.findViewById<MaterialButton>(R.id.btn_back)
 
-        btnLogin.setOnClickListener {
+        btnRegister.setOnClickListener {
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
-                viewModel.signIn(email, password)
+                viewModel.signUp(email, password)
             } else {
-                Toast.makeText(requireContext(), "Ingresa tu correo y contraseña", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Por favor, ingresa correo y contraseña", Toast.LENGTH_SHORT).show()
             }
         }
 
-        btnRegister.setOnClickListener {
-            findNavController().navigate(R.id.action_login_to_register)
+        btnBack.setOnClickListener {
+            findNavController().navigate(R.id.action_register_to_login)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.loginState.collect { state ->
+                viewModel.registerState.collect { state ->
                     when (state) {
                         is ResponseService.Loading -> {
-                            btnLogin.isEnabled = false
+                            btnRegister.isEnabled = false
                         }
                         is ResponseService.Success -> {
-                            btnLogin.isEnabled = true
-                            Toast.makeText(requireContext(), "¡Bienvenido!", Toast.LENGTH_SHORT).show()
-                            // findNavController().navigate(R.id.action_login_to_home)
+                            btnRegister.isEnabled = true
+                            Toast.makeText(requireContext(), "Cuenta creada", Toast.LENGTH_SHORT).show()
+                            findNavController().navigate(R.id.action_register_to_registerInfo)
                         }
                         is ResponseService.Error -> {
-                            btnLogin.isEnabled = true
+                            btnRegister.isEnabled = true
                             Toast.makeText(requireContext(), state.message, Toast.LENGTH_LONG).show()
                         }
                         null -> Unit

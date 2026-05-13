@@ -37,4 +37,6 @@
     <string name="accept">Aceptar</string>
     <string name="gestion_desastres">Gestión de desastres</string>
     <string name="descripcion_home">Aplicación para la gestión de desastres CDMX</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
