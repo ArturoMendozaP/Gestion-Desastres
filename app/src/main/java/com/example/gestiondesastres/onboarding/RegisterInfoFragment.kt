@@ -1,5 +1,6 @@
-package com.example.gestiondesastres
+package com.example.gestiondesastres.onboarding
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
+import com.example.gestiondesastres.R
+import com.example.gestiondesastres.onboarding.RegisterInfoViewModel
 import com.example.gestiondesastres.core.ResponseService
+import com.example.gestiondesastres.home.HomeActivity
 import com.example.gestiondesastres.models.UserProfile
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
@@ -61,7 +66,13 @@ class RegisterInfoFragment : Fragment() {
                         }
                         is ResponseService.Success -> {
                             btnSave.isEnabled = true
-                            Toast.makeText(requireContext(), "¡Perfil guardado en la nube!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), "¡Bienvenido!", Toast.LENGTH_SHORT).show()
+
+                            activity?.let { miActividad ->
+                                val intent = Intent(miActividad, HomeActivity::class.java)
+                                startActivity(intent)
+                                miActividad.finish()
+                            }
                         }
                         is ResponseService.Error -> {
                             btnSave.isEnabled = true

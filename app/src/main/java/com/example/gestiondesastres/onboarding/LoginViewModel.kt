@@ -1,4 +1,4 @@
-package com.example.gestiondesastres
+package com.example.gestiondesastres.onboarding
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

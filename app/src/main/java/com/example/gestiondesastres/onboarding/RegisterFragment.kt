@@ -1,4 +1,4 @@
-package com.example.gestiondesastres
+package com.example.gestiondesastres.onboarding
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +11,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.example.gestiondesastres.R
+import com.example.gestiondesastres.onboarding.RegisterViewModel
 import com.example.gestiondesastres.core.ResponseService
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
