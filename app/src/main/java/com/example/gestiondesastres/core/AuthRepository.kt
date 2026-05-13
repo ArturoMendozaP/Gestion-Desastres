@@ -48,5 +48,3 @@ class AuthRepository(): Authentication {
         }
     }
 }
-
-/*EASTER*/
