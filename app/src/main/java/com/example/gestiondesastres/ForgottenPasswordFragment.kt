@@ -20,7 +20,7 @@ class ForgottenPasswordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // "Volver al inicio de sesión"
+        // "Volver al inicio de sesión" EASTER
         view.findViewById<MaterialButton>(R.id.btn_back).setOnClickListener {
             findNavController().navigate(R.id.action_forgot_to_login)
         }
