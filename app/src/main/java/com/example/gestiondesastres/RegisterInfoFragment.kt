@@ -1,28 +1,24 @@
 package com.example.gestiondesastres
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.example.gestiondesastres.core.ResponseService
+import com.example.gestiondesastres.models.UserProfile
 import com.google.android.material.button.MaterialButton
-
-private const val ARG_EMAIL = "email"
-private const val ARG_UID = "uid"
+import com.google.android.material.textfield.TextInputEditText
+import kotlinx.coroutines.launch
 
 class RegisterInfoFragment : Fragment() {
 
-    private var email: String? = null
-    private var uid: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            email = it.getString(ARG_EMAIL)
-            uid = it.getString(ARG_UID)
-        }
-    }
+    private val viewModel: RegisterInfoViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,24 +30,47 @@ class RegisterInfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // "Continuar" → lleva al Home
-        view.findViewById<MaterialButton>(R.id.btn_continue).setOnClickListener {
-            findNavController().navigate(R.id.action_registerInfo_to_home)
+        val etFirstName = view.findViewById<TextInputEditText>(R.id.et_first_name)
+        val etLastName = view.findViewById<TextInputEditText>(R.id.et_last_name)
+        val etUsername = view.findViewById<TextInputEditText>(R.id.et_username)
+        val etPhone = view.findViewById<TextInputEditText>(R.id.et_phone)
+        val etBirthDate = view.findViewById<TextInputEditText>(R.id.et_birthdate)
+        val btnSave = view.findViewById<MaterialButton>(R.id.btn_save_info)
+
+        btnSave.setOnClickListener {
+            val name = etFirstName.text.toString().trim()
+            val lastName = etLastName.text.toString().trim()
+            val username = etUsername.text.toString().trim()
+            val phone = etPhone.text.toString().trim()
+            val birthDate = etBirthDate.text.toString().trim()
+
+            if (name.isNotEmpty() && phone.isNotEmpty()) {
+                val profile = UserProfile(name, lastName, username, phone, birthDate)
+                viewModel.saveProfile(profile)
+            } else {
+                Toast.makeText(requireContext(), "Por favor llena los campos obligatorios", Toast.LENGTH_SHORT).show()
+            }
         }
 
-        // "Completar después" → también lleva al Home
-        view.findViewById<MaterialButton>(R.id.btn_skip).setOnClickListener {
-            findNavController().navigate(R.id.action_registerInfo_to_home)
-        }
-    }
-
-    companion object {
-        fun newInstance(email: String, uid: String) =
-            RegisterInfoFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_EMAIL, email)
-                    putString(ARG_UID, uid)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.saveState.collect { state ->
+                    when (state) {
+                        is ResponseService.Loading -> {
+                            btnSave.isEnabled = false
+                        }
+                        is ResponseService.Success -> {
+                            btnSave.isEnabled = true
+                            Toast.makeText(requireContext(), "¡Perfil guardado en la nube!", Toast.LENGTH_SHORT).show()
+                        }
+                        is ResponseService.Error -> {
+                            btnSave.isEnabled = true
+                            Toast.makeText(requireContext(), state.message, Toast.LENGTH_LONG).show()
+                        }
+                        null -> Unit
+                    }
                 }
             }
+        }
     }
 }

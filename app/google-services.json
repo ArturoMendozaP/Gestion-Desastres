@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "452663338722",
+    "project_id": "gestiondesastres-c18d6",
+    "storage_bucket": "gestiondesastres-c18d6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452663338722:android:d903ece6fb976e7e15a0bb",
+        "android_client_info": {
+          "package_name": "com.example.gestiondesastres"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMVlJ4tJ8lNkDqu4JhuHipuSt6yg4UEds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
