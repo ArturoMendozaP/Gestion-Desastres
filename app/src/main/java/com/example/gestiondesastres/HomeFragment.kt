@@ -20,10 +20,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        Handler(Looper.getMainLooper()).postDelayed({
-            findNavController().navigate(R.id.action_home_to_login)
-        }, 2000) // 2000 ms = 2 segundos
     }
 
     companion object {

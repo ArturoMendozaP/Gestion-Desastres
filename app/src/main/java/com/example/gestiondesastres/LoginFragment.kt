@@ -18,7 +18,6 @@ import kotlinx.coroutines.launch
 
 class LoginFragment : Fragment() {
 
-    // 1. Instanciamos el cerebro del Login
     private val viewModel: LoginViewModel by viewModels()
 
     override fun onCreateView(
@@ -31,7 +30,6 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // ⚠️ REVISA TU XML: Asegúrate de que los IDs sean et_email, et_password, btn_login, etc.
         val etEmail = view.findViewById<TextInputEditText>(R.id.et_email)
         val etPassword = view.findViewById<TextInputEditText>(R.id.et_password)
         val btnLogin = view.findViewById<MaterialButton>(R.id.btn_login)
