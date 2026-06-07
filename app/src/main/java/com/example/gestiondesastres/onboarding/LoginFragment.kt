@@ -1,5 +1,6 @@
-package com.example.gestiondesastres
+package com.example.gestiondesastres.onboarding
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.example.gestiondesastres.onboarding.LoginViewModel
+import com.example.gestiondesastres.R
 import com.example.gestiondesastres.core.ResponseService
+import com.example.gestiondesastres.home.HomeActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
@@ -60,7 +64,12 @@ class LoginFragment : Fragment() {
                         is ResponseService.Success -> {
                             btnLogin.isEnabled = true
                             Toast.makeText(requireContext(), "¡Bienvenido!", Toast.LENGTH_SHORT).show()
-                            // findNavController().navigate(R.id.action_login_to_home)
+
+                            activity?.let { miActividad ->
+                                val intent = Intent(miActividad, HomeActivity::class.java)
+                                startActivity(intent)
+                                miActividad.finish()
+                            }
                         }
                         is ResponseService.Error -> {
                             btnLogin.isEnabled = true
