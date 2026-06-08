@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginTop="12dp"
+    android:background="@color/surface"
+    android:padding="16dp">
+
+    <View
+        android:id="@+id/view_barra_color"
+        android:layout_width="8dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_triage_tipo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:textColor="@color/on_surface"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/view_barra_color"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Inundación · Pluvial" />
+
+    <TextView
+        android:id="@+id/tv_triage_alcaldia"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/view_barra_color"
+        app:layout_constraintTop_toBottomOf="@id/tv_triage_tipo"
+        tools:text="Iztapalapa" />
+
+    <Button
+        android:id="@+id/btn_atender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/accent"
+        android:text="Marcar atendido"
+        android:textColor="@color/on_accent"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/view_barra_color"
+        app:layout_constraintTop_toBottomOf="@id/tv_triage_alcaldia" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
