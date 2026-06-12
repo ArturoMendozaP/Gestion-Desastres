@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.firebase)
+    //id("kotlin-parcelize")
 }
 
 android {
@@ -52,4 +53,9 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+    implementation(libs.okhttp.logging)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.coroutines.play.services)
 }

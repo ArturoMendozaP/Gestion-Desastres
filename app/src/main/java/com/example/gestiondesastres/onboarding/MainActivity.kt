@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
     }
 
-    // Permite que el botón físico Atrás respete el back stack de Navigation
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
